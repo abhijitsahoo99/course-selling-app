@@ -25,7 +25,8 @@ function Courses () {
     </div>
 }
 
-function Course(props){
+export function Course(props){
+    console.log("hi there from updateddd card")
     return <Card style={{
         margin: 10,
         width: 300,
