@@ -1,4 +1,5 @@
 import './App.css'
+import Home from './Home';
 import Signin from './Signin'
 import Signup from './Signup'
 import AddCourse from './AddCourse'
@@ -8,10 +9,11 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 function App() {
 
   return (
-    <div>
+    <div className="home">
            <Router>
              <Appbar />
                 <Routes>
+                    <Route path={"/"} element={<Home />} />
                     <Route path={"/addcourse"} element={<AddCourse />} />
                     <Route path={"/signin"} element={<Signin />} />
                     <Route path={"/signup"} element={<Signup />} />
@@ -22,4 +24,4 @@ function App() {
   )
 }
 
-export default App
+export default App;

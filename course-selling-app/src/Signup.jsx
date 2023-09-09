@@ -21,8 +21,8 @@ function Signup (){
             <Button size={"large"} variant="contained"
             onClick = {() => {
                 function callback2(data){
-                    console.log(data)
                     localStorage.setItem("token" , data.token);
+                    window.location = "/"
                 }
 
                 function callback1(res){
