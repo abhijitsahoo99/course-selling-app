@@ -53,8 +53,8 @@ function Appbar()
                     <Typography sx={{margin: 2 , marginTop: 1 , padding: 1}} variant={"h5"}>Coursera</Typography>
                 </div>
                  <div>
-                    <Button sx={{marginRight: 2 , marginTop: 1}} size={"large"} variant="contained" onClick={()=> navigate("/signup")}>Sign up</Button>
-                    <Button sx={{marginRight: 2 , marginTop: 1}} size={"large"} variant="contained" onClick={()=> navigate("/signin")}>Sign in</Button>
+                    <Button sx={{marginRight: 2 , marginTop: 1}} size={"medium"} variant="contained" onClick={()=> navigate("/signup")}>Sign up</Button>
+                    <Button sx={{marginRight: 2 , marginTop: 1}} size={"medium"} variant="contained" onClick={()=> navigate("/signin")}>Sign in</Button>
                 </div>
             </div>
     )

@@ -23,8 +23,7 @@ function AddCourse() {
 
             <Button size={"large"} variant="contained"
              onClick = {() => {
-                function callback2(data){
-                    console.log(data)
+                function callback2(){
                     alert("Course Added")
                 }
 
