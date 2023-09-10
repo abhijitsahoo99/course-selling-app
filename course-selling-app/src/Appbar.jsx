@@ -1,12 +1,10 @@
-import Button from '@mui/material/Button';
 import {Typography} from "@mui/material";
-import './Appbar.css';
-import { useNavigate } from 'react-router-dom';
-import { useState , useEffect } from 'react';
+import Button from "@mui/material/Button";
+import { useEffect, useState } from "react";
+import {useNavigate} from "react-router-dom";
 
-function Appbar()
-{
-    const navigate = useNavigate();
+function Appbar() {
+    const navigate = useNavigate()
     const [userEmail, setUserEmail] = useState(null);
 
     useEffect(() => {
@@ -26,16 +24,36 @@ function Appbar()
             }
         }).then(callback1)
     }, []);
+
     if (userEmail) {
-        return <div className = 'appbar'>
-            <div>
+        return <div style={{
+            display: "flex",
+            justifyContent: "space-between",
+            padding: 4,
+            zIndex: 1
+        }}>
+            <div style={{marginLeft: 10}}>
                 <Typography variant={"h6"}>Coursera</Typography>
             </div>
+    
             <div style={{display: "flex"}}>
-                <div>
-                    {userEmail}
-                </div>
+                <div style={{marginRight: 10, display: "flex"}}>
                 <div style={{marginRight: 10}}>
+                        <Button
+                            onClick={() => {
+                                navigate("/addcourse")
+                            }}
+                        >Add course</Button>
+                    </div>
+
+                    <div style={{marginRight: 10}}>
+                        <Button
+                            onClick={() => {
+                                navigate("/courses")
+                            }}
+                        >Courses</Button>
+                    </div>
+
                     <Button
                         variant={"contained"}
                         onClick={() => {
@@ -47,17 +65,36 @@ function Appbar()
             </div>
         </div>
     } else {
-        return (
-                <div className='appbar'>
-                <div>
-                    <Typography sx={{margin: 2 , marginTop: 1 , padding: 1}} variant={"h5"}>Coursera</Typography>
+        return <div style={{
+            display: "flex",
+            justifyContent: "space-between",
+            padding: 4,
+            zIndex: 1
+        }}>
+            <div style={{marginLeft: 10}}>
+                <Typography variant={"h6"}>Coursera</Typography>
+            </div>
+    
+            <div style={{display: "flex"}}>
+                <div style={{marginRight: 10}}>
+                    <Button
+                        variant={"contained"}
+                        onClick={() => {
+                            navigate("/signup")
+                        }}
+                    >Signup</Button>
                 </div>
-                 <div>
-                    <Button sx={{marginRight: 2 , marginTop: 1}} size={"medium"} variant="contained" onClick={()=> navigate("/signup")}>Sign up</Button>
-                    <Button sx={{marginRight: 2 , marginTop: 1}} size={"medium"} variant="contained" onClick={()=> navigate("/signin")}>Sign in</Button>
+                <div>
+                    <Button
+                        variant={"contained"}
+                        onClick={() => {
+                            navigate("/signin")
+                        }}
+                    >Signin</Button>
                 </div>
             </div>
-    )
+        </div>
+    }
 }
-}
+
 export default Appbar;

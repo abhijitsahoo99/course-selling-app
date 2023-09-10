@@ -1,31 +1,35 @@
-import './App.css'
-import Home from './Home';
-import Signin from './Signin'
-import Signup from './Signup'
-import AddCourse from './AddCourse'
-import Courses from './Courses'
-import UpdateCourse from './UpdateCourse'
-import Appbar from './Appbar'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Signin from "./Signin.jsx";
+import Signup from "./Signup.jsx";
+import Appbar from "./Appbar.jsx";
+import AddCourse from "./AddCourse.jsx";
+import Courses from "./Courses";
+// import Course from "./Course";
+// import { useEffect, useState } from 'react';
+// import axios from "axios";
+import Course from './Course.jsx';
+
 
 function App() {
 
-  return (
-    <div className="home">
-           <Router>
-             <Appbar />
-                <Routes>
-                    <Route path={"/"} element={<Home />} />
-                    <Route path={"/courses"} element={<Courses />} />
-                    <Route path={"/addcourse"} element={<AddCourse />} />
-                    <Route path={"/course/:courseId"} element={<UpdateCourse />} />
-                    <Route path={"/signin"} element={<Signin />} />
-                    <Route path={"/signup"} element={<Signup />} />
-                </Routes>
-            </Router>
-     </div>
-    
-  )
+    return (
+        <div style={{width: "100vw",
+            height: "100vh",
+            backgroundColor: "#eeeeee"}}
+        >
+                <Router>
+                    <Appbar />
+                    <Routes>
+                        <Route path={"/addcourse"} element={<AddCourse />} />
+                        <Route path={"/course/:courseId"} element={<Course />} />
+                        <Route path={"/courses"} element={<Courses />} />
+                        <Route path={"/signin"} element={<Signin />} />
+                        <Route path={"/signup"} element={<Signup />} />
+                    </Routes>
+                </Router>
+
+        </div>
+    );
 }
 
 export default App;

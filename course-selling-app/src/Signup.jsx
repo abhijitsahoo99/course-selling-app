@@ -1,47 +1,64 @@
-import './Signup.css'
 import Button from '@mui/material/Button';
-import TextField from '@mui/material/TextField';
-import {Card, Typography} from '@mui/material';
+import TextField from "@mui/material/TextField";
+import {Card, Typography} from "@mui/material";
 import {useState} from "react";
+import axios from "axios";
 
-function Signup (){
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
+function Signup() {
+    const [email, setEmail] = useState("")
+    const [password, setPassword] = useState("")
 
     return <div>
-    <div className='heading'>
-        <Typography variant = {"h6"}>Welcome to Coursera. Sign up below</Typography>
-    </div>
-    <div className='box'>
-        <Card className='card' variant="outlined">
-            <TextField onChange = {(e)=> setEmail(e.target.value)} 
-            sx={{paddingBottom : 2}} fullWidth={true} id="outlined-basic" label="Email" variant="outlined" />
-            <TextField onChange = {(e)=> setPassword(e.target.value)} 
-            sx={{paddingBottom : 2}} fullWidth={true} id="outlined-basic" label="Password" variant="outlined" />
-            <Button size={"large"} variant="contained"
-            onClick = {() => {
-                function callback2(data){
-                    localStorage.setItem("token" , data.token);
-                    window.location = "/"
-                }
+            <div style={{
+                paddingTop: 150,
+                marginBottom: 10,
+                display: "flex",
+                justifyContent: "center"
+            }}>
+                <Typography variant={"h6"}>
+                Welcome to Coursera. Sign up below
+                </Typography>
+            </div>
+        <div style={{display: "flex", justifyContent: "center"}}>
+            <Card varint={"outlined"} style={{width: 400, padding: 20}}>
+                <TextField
+                    onChange={(evant11) => {
+                        let elemt = evant11.target;
+                        setEmail(elemt.value);
+                    }}
+                    fullWidth={true}
+                    label="Email"
+                    variant="outlined"
+                />
+                <br/><br/>
+                <TextField
+                    onChange={(e) => {
+                        setPassword(e.target.value);
+                    }}
+                    fullWidth={true}
+                    label="Password"
+                    variant="outlined"
+                    type={"password"}
+                />
+                <br/><br/>
 
-                function callback1(res){
-                    res.json().then(callback2)
-                }
-                fetch("http://localhost:3000/admin/signup", {
-                    method : "POST",
-                    body : JSON.stringify({
-                        username : email,
-                        password : password
-                    }),
-                    headers : {
-                        "content-type": "application/json"
-                    }
-                }).then(callback1)
-            }}
-            >Sign up</Button>
-        </Card>
-    </div>
+                <Button
+                    size={"large"}
+                    variant="contained"
+                    onClick={async() => {
+                        const response = await axios.post("http://localhost:3000/admin/signup", {
+                            username: email,
+                            password: password
+                        })
+                        let data = response.data;
+                        localStorage.setItem("token", data.token);
+                        window.location = "/"
+                    }}
+
+                > Signup</Button>
+            </Card>
+        </div>
     </div>
 }
+
 export default Signup;
