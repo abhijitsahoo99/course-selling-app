@@ -1,2 +1,1 @@
-# course-selling-app
-Author - Abhijit Sahoo 
+# course-selling-website
